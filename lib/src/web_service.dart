@@ -24,7 +24,7 @@ class UsersWebService extends BaseClient {
   /// [String tockenChannel] indicates the token a channel (optional)
   UsersWebService(bool enableSecurity, bool devMode, [String tokenChannel])
       : super(enableSecurity, devMode) {
-    // sets the tocken of a channel
+    // sets the tocken of a channel 
     token = tokenChannel;
   }
 
