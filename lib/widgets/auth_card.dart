@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teste/src/web_service.dart';
-
+import 'package:orion_client/orion_client.dart';
 class AuthCard extends StatefulWidget {
   @override
   _AuthCardState createState() => _AuthCardState();
