@@ -1,3 +1,4 @@
+import 'package:orion_client/orion_client.dart';
 
 enum AuthMode {
   LOGIN,
@@ -9,6 +10,20 @@ class AuthData {
   String email;
   String password;
   AuthMode _mode = AuthMode.LOGIN;
+
+  Future<void> signup(String email, String name, String password) async {
+    final url = new UsersWebService(false, true);
+
+    final response = await url.createUser(name, email, password);
+    return response;
+  }
+
+  Future<void> login(String email, String password) async {
+    final url = new UsersWebService(false, true);
+
+    final response = await url.login(email, password);
+    return response;
+  }
 
   bool get isSignup {
     return _mode == AuthMode.SIGNUP;

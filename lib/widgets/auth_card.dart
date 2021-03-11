@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:orion_client/orion_client.dart';
 import 'package:teste/models/auth_data.dart';
 import 'package:teste/screens/home_screen.dart';
 
 class AuthCard extends StatefulWidget {
+
   @override
   _AuthCardState createState() => _AuthCardState();
 }
@@ -12,33 +12,20 @@ class _AuthCardState extends State<AuthCard>
     with SingleTickerProviderStateMixin {
   GlobalKey<FormState> _form = GlobalKey();
   final AuthData _authData = AuthData();
+   
+
 
   final Map<String, String> _data = {
     'email': '',
     'name': '',
     'password': '',
   };
-
-  Future<void> signup(String email, String name, String password) async {
-    final url = new UsersWebService(false, true);
-
-    final response = await url.createUser(name, email, password);
-    return response;
-  }
-
-  Future<void> login(String email, String password) async {
-    final url = new UsersWebService(false, true);
-
-    final response = await url.login(email, password);
-    return response;
-  }
-
-  Future<void> onLogin(Map<String, String> map) async {
-    await login(map['email'], map['password']);
+   Future<void> onLogin(Map<String, String> map) async {
+    await _authData.login(map['email'], map['password']);
   }
 
   Future<void> onSignup(Map<String, String> map) async {
-    await signup(map['email'], map['name'], map['password']);
+    await _authData.signup(map['email'], map['name'], map['password']);
   }
 
   final _controllerName = TextEditingController();
@@ -111,7 +98,7 @@ class _AuthCardState extends State<AuthCard>
               child: Text('ENTRAR'),
               onPressed: () => onLogin(_data) == null
                   ? null
-                  : () {
+                  : () { 
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => HomeScreen(),
