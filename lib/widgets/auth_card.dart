@@ -3,7 +3,6 @@ import 'package:teste/models/auth_data.dart';
 import 'package:teste/screens/home_screen.dart';
 
 class AuthCard extends StatefulWidget {
-
   @override
   _AuthCardState createState() => _AuthCardState();
 }
@@ -12,15 +11,14 @@ class _AuthCardState extends State<AuthCard>
     with SingleTickerProviderStateMixin {
   GlobalKey<FormState> _form = GlobalKey();
   final AuthData _authData = AuthData();
-   
-
 
   final Map<String, String> _data = {
     'email': '',
     'name': '',
     'password': '',
   };
-   Future<void> onLogin(Map<String, String> map) async {
+
+  Future<void> onLogin(Map<String, String> map) async {
     await _authData.login(map['email'], map['password']);
   }
 
@@ -81,7 +79,7 @@ class _AuthCardState extends State<AuthCard>
               onPressed: () => onSignup(_data) == null
                   ? null
                   : () {
-                      Navigator.of(context).push(
+                      Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) => HomeScreen(),
                         ),
@@ -98,8 +96,8 @@ class _AuthCardState extends State<AuthCard>
               child: Text('ENTRAR'),
               onPressed: () => onLogin(_data) == null
                   ? null
-                  : () { 
-                      Navigator.of(context).push(
+                  : () {
+                      Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) => HomeScreen(),
                         ),

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      routes: {
+       routes: {
         AppRoutes.AUTH_SCREEN: (ctx) => AuthScreen(),
         AppRoutes.HOME_SCREEN: (ctx) => HomeScreen(),
       },
