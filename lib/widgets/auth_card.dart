@@ -18,8 +18,8 @@ class _AuthCardState extends State<AuthCard>
     'password': '',
   };
 
-  Future<void> onLogin(Map<String, String> map) async {
-    await _authData.login(map['email'], map['password']);
+  Future<String> onLogin(Map<String, String> map) async {
+    return await _authData.login(map['email'], map['password']);
   }
 
   Future<void> onSignup(Map<String, String> map) async {
@@ -94,15 +94,15 @@ class _AuthCardState extends State<AuthCard>
                 vertical: 8.0,
               ),
               child: Text('ENTRAR'),
-              onPressed: () => onLogin(_data) == null
+              onPressed: () => onLogin(_data) == null 
                   ? null
-                  : () {
+                  : {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) => HomeScreen(),
                         ),
-                      );
-                    },
+                      ),
+                    }
             ),
       FlatButton(
         textColor: Theme.of(context).primaryColor,

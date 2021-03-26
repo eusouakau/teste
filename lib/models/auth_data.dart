@@ -30,10 +30,10 @@ class AuthData {
     return response;
   }
 
-  Future<void> login(String email, String password) async {
+  Future<String> login(String email, String password) async {
     final url = new UsersWebService(false, true);
 
     final response = await url.login(email, password);
-    return response;
+    return response.body;
   }
 }
