@@ -11,6 +11,7 @@ class _AuthCardState extends State<AuthCard>
     with SingleTickerProviderStateMixin {
   GlobalKey<FormState> _form = GlobalKey();
   final AuthData _authData = AuthData();
+  String userLogIn;
 
   final Map<String, String> _data = {
     'email': '',
@@ -94,15 +95,29 @@ class _AuthCardState extends State<AuthCard>
                 vertical: 8.0,
               ),
               child: Text('ENTRAR'),
-              onPressed: () => onLogin(_data) == null 
-                  ? null
-                  : {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
-                        ),
-                      ),
-                    }
+              // onPressed: () => onLogin(_data) == null
+              //     ? null
+              //     : () {
+              //         Navigator.of(context).pushReplacement(
+              //           MaterialPageRoute(
+              //             builder: (context) => HomeScreen(),
+              //           ),
+              //         );
+              //       }),
+              onPressed: () async {
+                userLogIn = await onLogin(_data);
+                if (userLogIn.isNotEmpty) {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                  );
+                } else {
+                  Text(
+                    'Erro',
+                  );
+                }
+              },
             ),
       FlatButton(
         textColor: Theme.of(context).primaryColor,

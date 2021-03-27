@@ -10,6 +10,7 @@ class AuthData {
   String email;
   String password;
   AuthMode _mode = AuthMode.LOGIN;
+  String body;
 
   bool get isSignup {
     return _mode == AuthMode.SIGNUP;
@@ -32,7 +33,6 @@ class AuthData {
 
   Future<String> login(String email, String password) async {
     final url = new UsersWebService(false, true);
-
     final response = await url.login(email, password);
     return response.body;
   }
