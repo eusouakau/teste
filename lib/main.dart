@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import './screens/auth_screen.dart';
 import './utils/app_routes.dart';
-import './screens/home_screen.dart';
+//import './screens/home_screen.dart';
+import './screens/init_chat_screen.dart';
+import './screens/chat_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Teste',
       theme: ThemeData(
-        primaryColor: Colors.black,
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.lightGreen,
         backgroundColor: Colors.black12,
         accentColor: Colors.grey,
         accentColorBrightness: Brightness.dark,
@@ -28,7 +29,9 @@ class MyApp extends StatelessWidget {
       ),
        routes: {
         AppRoutes.AUTH_SCREEN: (ctx) => AuthScreen(),
-        AppRoutes.HOME_SCREEN: (ctx) => HomeScreen(),
+ //       AppRoutes.HOME_SCREEN: (ctx) => HomeScreen(),
+        AppRoutes.INIT_CHAT_SCREEN: (ctx) => InitChatScreen(),
+        AppRoutes.CHAT_SCREEN: (ctx) => ChatScreen(),
       },
     );
   }

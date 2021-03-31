@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teste/models/auth_data.dart';
-import 'package:teste/screens/home_screen.dart';
+//import 'package:teste/screens/home_screen.dart';
+import 'package:teste/screens/init_chat_screen.dart';
 
 class AuthCard extends StatefulWidget {
   @override
@@ -82,7 +83,7 @@ class _AuthCardState extends State<AuthCard>
                   : () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                          builder: (context) => InitChatScreen(),
                         ),
                       );
                     },
@@ -109,13 +110,11 @@ class _AuthCardState extends State<AuthCard>
                 if (userLogIn.isNotEmpty) {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => HomeScreen(),
+                      builder: (context) => InitChatScreen(),
                     ),
                   );
                 } else {
-                  Text(
-                    'Erro',
-                  );
+                  return Text('Email ou senha incorretos');
                 }
               },
             ),
