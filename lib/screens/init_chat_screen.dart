@@ -6,7 +6,7 @@ class InitChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         brightness: Brightness.dark,
         elevation: 8,

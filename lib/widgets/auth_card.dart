@@ -35,6 +35,7 @@ class _AuthCardState extends State<AuthCard>
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Theme.of(context).backgroundColor,
       child: Container(
         height: _authData.isSignup ? 350 : 290,
         width: 300,
@@ -78,7 +79,8 @@ class _AuthCardState extends State<AuthCard>
                 vertical: 8.0,
               ),
               child: Text('CADASTRAR'),
-              onPressed: () => onSignup(_data) == null
+              onPressed: () => onSignup(_data),
+              /* == null
                   ? null
                   : () {
                       Navigator.of(context).pushReplacement(
@@ -86,7 +88,7 @@ class _AuthCardState extends State<AuthCard>
                           builder: (context) => InitChatScreen(),
                         ),
                       );
-                    },
+                    },*/
             )
           : RaisedButton(
               color: Theme.of(context).primaryColor,

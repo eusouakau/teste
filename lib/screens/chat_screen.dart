@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/message_model.dart';
 import '../models/user_model.dart';
+import '../models/chat_data.dart';
 
 class ChatScreen extends StatefulWidget {
   final User user;
@@ -12,6 +13,13 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final ChatData _chatData = ChatData();
+  String message;
+
+  Future<String> sendMessages(String message) async {
+    return await _chatData.sendMessage(message);
+  }
+
   _chatBubble(Message message, bool isMe, bool isSameUser) {
     if (isMe) {
       return Column(
@@ -28,7 +36,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   padding: EdgeInsets.all(10),
                   margin: EdgeInsets.symmetric(vertical: 10),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).backgroundColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
@@ -139,12 +147,12 @@ class _ChatScreenState extends State<ChatScreen> {
             icon: Icon(Icons.photo),
             iconSize: 25,
             color: Theme.of(context).primaryColor,
-            onPressed: () {},
+            onPressed: () async {},
           ),
           Expanded(
             child: TextField(
               decoration: InputDecoration.collapsed(
-                hintText: 'Digite sua mensagem..',
+                hintText: 'Digite sua mensagem...',
               ),
               textCapitalization: TextCapitalization.sentences,
             ),
@@ -153,7 +161,13 @@ class _ChatScreenState extends State<ChatScreen> {
             icon: Icon(Icons.send),
             iconSize: 25,
             color: Theme.of(context).primaryColor,
-            onPressed: () {},
+            onPressed: () async {
+                message = await sendMessages(message);
+                if (message.isNotEmpty) {
+                  
+                  
+                } 
+              },
           ),
         ],
       ),
@@ -164,7 +178,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     int prevUserId;
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         brightness: Brightness.dark,
         centerTitle: true,
