@@ -71,12 +71,16 @@ class _AuthCardState extends State<AuthCard>
       ),
       SizedBox(height: 20),
       _authData.isSignup
-          ? RaisedButton(
-              color: Theme.of(context).primaryColor,
-              textColor: Theme.of(context).primaryTextTheme.button.color,
-              padding: EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 8.0,
+          ? ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Theme.of(context).primaryColor,
+                textStyle: TextStyle(
+                    color: Theme.of(context).primaryTextTheme.button.color),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 8.0,
+                ),
+                elevation: 20,
               ),
               child: Text('CADASTRAR'),
               onPressed: () => onSignup(_data),
@@ -90,12 +94,16 @@ class _AuthCardState extends State<AuthCard>
                       );
                     },*/
             )
-          : RaisedButton(
-              color: Theme.of(context).primaryColor,
-              textColor: Theme.of(context).primaryTextTheme.button.color,
-              padding: EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 8.0,
+          : ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                elevation: 20,
+                primary: Theme.of(context).primaryColor,
+                textStyle: TextStyle(
+                    color: Theme.of(context).primaryTextTheme.button.color),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 8.0,
+                ),
               ),
               child: Text('ENTRAR'),
               // onPressed: () => onLogin(_data) == null
@@ -120,8 +128,10 @@ class _AuthCardState extends State<AuthCard>
                 }
               },
             ),
-      FlatButton(
-        textColor: Theme.of(context).primaryColor,
+      TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
         child: Text(
           _authData.isLogin ? 'Criar uma nova conta?' : 'Já possui uma conta?',
         ),
