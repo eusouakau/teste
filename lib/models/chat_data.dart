@@ -1,12 +1,20 @@
 import 'package:orion_client/orion_client.dart';
 
+
 class ChatData {
 
 
-  Future<void> createChannel() async {
+  Future<void> createChannel(String channel) async {
     final url = new TalkWebService(false, true);
 
     final response = await url.createChannel();
+    return response;
+  }
+
+   Future<Object> loadMessages(String token) async {
+    final url = new TalkWebService(false, true);
+
+    final response = await url.loadMessages(token);
     return response;
   }
 
@@ -17,10 +25,4 @@ class ChatData {
     return response;
   }
 
-  Future<Object> loadMessages(String token) async {
-    final url = new TalkWebService(false, true);
-
-    final response = await url.loadMessages(token);
-    return response;
-  }
 }

@@ -19,6 +19,12 @@ class _ChatScreenState extends State<ChatScreen> {
   Future<String> sendMessages(String message) async {
     return await _chatData.sendMessage(message);
   }
+  Future<void> createChannel(String channel) async {
+    return await _chatData.createChannel(channel);
+  }
+  Future<String> loadMessages(String token) async {
+    return await _chatData.sendMessage(token);
+  }
 
   _chatBubble(Message message, bool isMe, bool isSameUser) {
     if (isMe) {
@@ -163,10 +169,6 @@ class _ChatScreenState extends State<ChatScreen> {
             color: Theme.of(context).primaryColor,
             onPressed: () async {
                 message = await sendMessages(message);
-                if (message.isNotEmpty) {
-                  
-                  
-                } 
               },
           ),
         ],
