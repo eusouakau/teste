@@ -19,9 +19,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Future<String> sendMessages(String message) async {
     return await _chatData.sendMessage(message);
   }
-  Future<void> createChannel(String channel) async {
-    return await _chatData.createChannel(channel);
-  }
+ 
   Future<String> loadMessages(String token) async {
     return await _chatData.sendMessage(token);
   }

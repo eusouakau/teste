@@ -4,7 +4,7 @@ import 'package:orion_client/orion_client.dart';
 class ChatData {
 
 
-  Future<void> createChannel(String channel) async {
+  Future<void> createChannel(String channel) async { 
     final url = new TalkWebService(false, true);
 
     final response = await url.createChannel();
